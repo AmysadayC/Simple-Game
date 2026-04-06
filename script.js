@@ -2,24 +2,26 @@ console.log("Script Started");
 
 //Start the game
 function start() {
-    createSquare(23);
-    createSquare(45);
-    createSquare(75);
-    createSquare(200);
-    createSquare(16);
-    createSquare(47);
-    createSquare(90);
+    createSquare(93, "Black");
+    createSquare(55, "White");
+    createSquare(75, "Blue");
+    createSquare(200, "Brown");
      console.log(Math.random() * 1000);
 }
 
 //Creates Square.
 
-function createSquare(size) {
+function createSquare(size, color) {
     //Creates an element.
+
+    //Adds it to the page
    let square = document.createElement("div");
 
+   //Add click event.
+   square.addEventListener("click", handleClick);
+
     //Set some styles to make it a square.
-    square.style.background = "white";
+    square.style.background = color;
     square.style.borderRadius = "19px";
     square.style.width = size + "px";
     square.style.height = size + "px";
@@ -40,4 +42,11 @@ function getRandomX() {
 function getRandomY() {
     let randY = Math.random() * window.innerHeight;
     return randY;
+}
+
+// Hand the claper clicking a sqaure
+function handleClick(event) {
+    let square = event.target
+    console.log(square);
+    square.remove();
 }
