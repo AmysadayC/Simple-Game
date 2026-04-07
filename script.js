@@ -1,13 +1,24 @@
-console.log("Script Started");
+console.log("Script Started"); 
+let currentSize = 50;
+let timeLeft = 20;
 
 //Start the game
 function start() {
-    createSquare(93, "Black");
-    createSquare(55, "White");
-    createSquare(75, "Blue");
+    createSquare(50, "Black");
+    createSquare(100, "White");
+    createSquare(150, "Blue");
     createSquare(200, "Brown");
-     console.log(Math.random() * 1000);
+    console.log(Math.random() * 1000);
+    setInterval(updateTimer, 1000);
 }
+
+function updateTime(){
+    let timer = document.getElementById("timer");
+    timeLeft = timeLeft - 1;
+    timer.innerText = timeLeft + "s";
+    if (timeLeft <= 0) {
+        alert("Game Over");
+    }
 
 //Creates Square.
 
@@ -47,6 +58,11 @@ function getRandomY() {
 // Hand the claper clicking a sqaure
 function handleClick(event) {
     let square = event.target
-    console.log(square);
-    square.remove();
+    console.log(square.style.width);
+    if (square.style.width == currentSize + "px"){
+        console.log("First square");
+        square.remove();
+        currentSize == currentSize + 50;
+    }
+
 }
